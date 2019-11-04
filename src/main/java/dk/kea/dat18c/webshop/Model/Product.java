@@ -1,20 +1,33 @@
 package dk.kea.dat18c.webshop.Model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="products")
 public class Product {
 
+    //primær nøgle
+    @Id
+    //lad MySQL give den næste id (IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private double price;
     private String description;
 
+    @OneToOne
+    @JoinColumn(name = "companyproddesc_id")
+    private CompanyProdDesc companyProdDesc;
+
     public Product() {
     }
 
-    public Product(int id, String name, double price, String description) {
-        this.id = id;
+    public Product(String name, double price, String description, CompanyProdDesc companyProdDesc) {
         this.name = name;
         this.price = price;
         this.description = description;
+        this.companyProdDesc = companyProdDesc;
     }
 
     public int getId() {
@@ -47,5 +60,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public CompanyProdDesc getCompanyProdDesc() {
+        return companyProdDesc;
+    }
+
+    public void setCompanyProdDesc(CompanyProdDesc companyProdDesc) {
+        this.companyProdDesc = companyProdDesc;
     }
 }
