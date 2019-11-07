@@ -4,7 +4,9 @@ package dk.kea.dat18c.webshop.Model;
 //company has a one to many relation to product
 //the webshop may sell many products from the same company
 //a product comes from one and only one company
+
 public class Company {
+
     private int id;
     private String companyName;
 
@@ -31,4 +33,5 @@ public class Company {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
 }

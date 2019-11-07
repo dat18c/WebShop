@@ -2,6 +2,8 @@ package dk.kea.dat18c.webshop.Model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="products")
@@ -20,14 +22,20 @@ public class Product {
     @JoinColumn(name = "companyproddesc_id")
     private CompanyProdDesc companyProdDesc;
 
+    private Company company;
+
+    private List<Category> categories = new ArrayList<>();
+
     public Product() {
     }
 
-    public Product(String name, double price, String description, CompanyProdDesc companyProdDesc) {
+    public Product(String name, double price, String description, CompanyProdDesc companyProdDesc, Company company, List<Category> categories) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.companyProdDesc = companyProdDesc;
+        this.company = company;
+        this.categories = categories;
     }
 
     public int getId() {
@@ -68,5 +76,21 @@ public class Product {
 
     public void setCompanyProdDesc(CompanyProdDesc companyProdDesc) {
         this.companyProdDesc = companyProdDesc;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
