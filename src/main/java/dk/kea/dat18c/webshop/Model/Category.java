@@ -1,6 +1,5 @@
 package dk.kea.dat18c.webshop.Model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //class to handle category information
@@ -12,7 +11,9 @@ public class Category
 {
     private int id;
     private String categoryName;
-    private List<Product> products = new ArrayList<>();
+
+    //annoter many to many
+    private List<Product> products;
 
     public Category() {
     }
